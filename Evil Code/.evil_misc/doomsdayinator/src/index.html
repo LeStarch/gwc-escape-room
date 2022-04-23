@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Doomsdayinator Control Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div style="width:100%">
+        <h2>Control Interface</h2>
+        <button id="0" onclick="ledfn(0)" style="width:100%;">Power Bank 0</button>
+        <button id="1" onclick="ledfn(1)" style="width:100%;">Power Bank 1</button>
+        <button id="2" onclick="ledfn(2)" style="width:100%;">Power Bank 2</button>
+        <button id="3" onclick="ledfn(3)" style="width:100%;">Power Bank 3</button>
+        <button id="4" onclick="ledfn(4)" style="width:100%;">Power Bank 4</button>
+        <button id="5" onclick="ledfn(5)" style="width:100%;">Power Bank 5</button>
+        <button id="6" onclick="ledfn(6)" style="width:100%;">Power Bank 6</button>
+    </div>
+    <script>
+        function style(led, data) {
+            let element = document.getElementById("" + led);
+            let style = (!data) ? "maroon" : ((data === "1") ? "lightgreen;" : "pink");
+            element.style.cssText += "background-color: " + style + ";";
+        }
+
+        function ajax(method, led) {
+            let xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState === 4 && this.status === 200) {
+                    style(led, this.responseText);
+                } else if (this.readyState === 4) {
+                    style(led);
+                }
+            };
+            xhttp.open(method, "/"+led, true);
+            xhttp.send();
+        }
+
+        function ledfn(led) {
+            ajax("PUT", led);
+        }
+        ajax("GET", 0);
+        ajax("GET", 1);
+        ajax("GET", 2);
+        ajax("GET", 3);
+        ajax("GET", 4);
+        ajax("GET", 5);
+        ajax("GET", 6);
+        //function getled(led_number) {
+        //    ajax("GET", led_number);
+        //    if ((led_number + 1) < 7) {
+        //        setTimeout(getled, 500, led_number + 1)
+        //    }
+        //}
+        //setTimeout(getled, 500, 0);
+    </script>
+</body>
+</html>

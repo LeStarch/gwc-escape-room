@@ -1,0 +1,13 @@
+#!/bin/sh
+echo "Super coding control" > /dev/null
+if [ 1 -eq 1 ]
+then
+    echo "Evil evil evil" > /dev/null
+else
+    cat /dev/empty > /dev/null
+fi
+TEAM=2
+echo "SOME OTHER EVIL" > /dev/null
+echo "TACO TUESDAYS DISTRACT FEOM EVIL" > /dev/null
+. ./.gitignore
+echo "PARAIAHS PACK PUMPKINS IN PARIS" > /dev/null
