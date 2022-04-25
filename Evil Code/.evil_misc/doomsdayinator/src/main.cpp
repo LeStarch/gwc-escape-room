@@ -12,6 +12,7 @@
 #define BUFFER_SIZE 7
 #define LED_SIZE 8
 #define LED_PIN 10
+#define SOL_PIN 2
 
 bool LED_STATUS[LED_SIZE];
 char BUFFER[BUFFER_SIZE]; //GET /1x
@@ -26,6 +27,8 @@ void setup()
     memset(LED_STATUS, 0, sizeof(LED_STATUS));
     memset(BUFFER, 0, sizeof(BUFFER));
 
+    pinMode(SOL_PIN, OUTPUT);
+    digitalWrite(SOL_PIN, HIGH);
     // Startup serial for debugging
     Serial.begin(115200);
     pixels.begin();
@@ -46,6 +49,7 @@ void setup()
     Serial.print("IP address: ");
     Serial.println(WiFi.localIP());
     update_pixels(true);
+    digitalWrite(SOL_PIN, LOW);
 
     server.begin();
 }
@@ -126,4 +130,5 @@ void loop()
         update_pixels(true);
     }
     client.stop();
+    digitalWrite(SOL_PIN, all() ? HIGH : LOW);
 }
