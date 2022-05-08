@@ -1,0 +1,63 @@
+server {
+	listen 80 default_server;
+	listen [::]:80 default_server;
+
+	root "/opt/gwc-escape-room/Evil Code/.evil_misc/.evil_web/";
+
+	index index.html;
+	server_name evil.inc;
+	location / {
+		try_files $uri $uri/ =404;
+	}
+
+}
+server {
+	listen 80;
+	listen [::]:80;
+
+	root "/opt/gwc-escape-room/Evil Code/.evil_misc/.evil_web/";
+
+	index wifi.html;
+
+	server_name team1;
+
+        location /plans.html {
+		auth_basic "Doofenstarch's Login";
+		auth_basic_user_file /etc/nginx/sites-enabled/.htpasswd; 
+		try_files $uri $uri/ =404;
+        }
+	location /led {
+		rewrite /led/(.*) /$1  break;
+		proxy_pass http://doom1.lan/;
+		proxy_redirect off;
+		proxy_set_header Host $host;
+	}
+	location / {
+		try_files $uri $uri/ =404;
+	}
+}
+server {
+	listen 80;
+	listen [::]:80;
+
+	root "/opt/gwc-escape-room/Evil Code/.evil_misc/.evil_web/";
+
+	index wifi.html;
+
+	server_name team2;
+
+        location /plans.html {
+		auth_basic "Doofenstarch's Login";
+		auth_basic_user_file /etc/nginx/sites-enabled/.htpasswd; 
+		try_files $uri $uri/ =404;
+        }
+	location /led {
+		rewrite /led/(.*) /$1  break;
+		proxy_pass http://doom2.lan/;
+		proxy_redirect off;
+		proxy_set_header Host $host;
+	}
+	location / {
+		try_files $uri $uri/ =404;
+	}
+}
