@@ -1,7 +1,7 @@
 /**
  * WiFi landing page.
  */
-import {setup} from "./shared.js";
+import {setup, led} from "./shared.js";
 
 let TEMPLATE=`
 <div class="container-fluid">
@@ -17,6 +17,7 @@ let TEMPLATE=`
         To override Power Bank 3, enter emergency override:
         <input type="number" v-model="pb3.value" @change="override(pb3)" />
         <span v-if="pb3.error">{{ pb3.error }}</span>
+        <img src="img/matrix.png" alt="override code"/>
         </div>
     </div>
     <div style="color: white;">Dr. Doofenstarch, your password is <em>Ih8Perry</em></div>
@@ -26,14 +27,13 @@ let TEMPLATE=`
 let WiFiApp = {
     template: TEMPLATE,
     data: () => { return {
-                pb3: { value: 0, error: "", correct: 0o123, target: "/3" }
+                pb3: { value: 0, error: "", correct: 0o77156, target: "/3" }
             }
         },
     methods: {
         override(data) {
             if (data.value === data.correct) {
-                //TODO: Ajax put with target
-                console.log("Overriding: " + data.target);
+                led(2);
                 data.error = "";
             } else if (data.value) {
                 data.error = "Invalid override. You've failed, Perry!";

@@ -9,3 +9,13 @@ export function setup(data) {
     app.component("nav-view", NavView);
     app.mount("#body");
 }
+
+/**
+ * Light an LED to solve the puzzle.
+ */
+export function led(led_index) {
+    let xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = () => {};
+    xhr.open("PUT", "/led/"+led_index);
+    xhr.send()
+}

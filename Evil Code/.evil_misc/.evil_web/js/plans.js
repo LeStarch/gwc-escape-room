@@ -1,7 +1,7 @@
 /**
  * Evil Plans landing page.
  */
-import {setup} from "./shared.js";
+import {setup, led} from "./shared.js";
 import {CHINESE_EMAIL, IT_E_MAIL} from "./chinese.js";
 
 let TEMPLATE=`
@@ -142,7 +142,7 @@ let PlansApp = {
 > collaboration will do us both well.
 >
 > Sincerely in Evil,
-> - Dr. Drake D. Doofenstarch, Director, Dr. Doffenstarch's Evil Inc.
+> - Dr. Heinz Doofenstarch, Director, Dr. Doffenstarch's Evil Inc.
 </pre>
                     `
                 },
@@ -226,6 +226,19 @@ let PlansApp = {
                     "html": IT_E_MAIL
                 },
                 {
+                    "id":    "secmat",
+                    "title": "MEMO: New Security Procedures",
+                    "html": `
+                    <h5>To: Evil Inc.</h5>
+                    <h5>From: Multiplication of Manic Matrices and Marshmallow Mit Mange Management</h5>
+                    <h5>Subject: New Security Procedures</h5>
+                    <p>We've made the decision that all override codes henceforth shall be published in matrix notation
+                    as this ensures that our division shall be indispensable to the organization for years to come. For
+                    those of you unable to computer basic linear algebra, please refer to the following computational
+                    equivalent.</p>
+                    <a href="https://octave-online.net/">https://octave-online.net/</a> `
+                },
+                {
                     "id":   "congrats",
                     "title": "MEMO: Congratulations Team Omega",
                     "html": `
@@ -270,4 +283,4 @@ let PlansApp = {
 
 
 
-window.addEventListener("load", () => setup(PlansApp));
+window.addEventListener("load", () => {led(0); setup(PlansApp)});
