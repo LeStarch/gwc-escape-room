@@ -12,8 +12,10 @@
 #define BUFFER_SIZE 7
 #define LED_SIZE 8
 #define LED_PIN 10
+#define SW_PIN 16
 #define SOL_PIN 2
 
+unsigned long int MILLIS_START = 0;
 bool LED_STATUS[LED_SIZE];
 char BUFFER[BUFFER_SIZE]; //GET /1x
 
@@ -28,6 +30,7 @@ void setup()
     memset(BUFFER, 0, sizeof(BUFFER));
 
     pinMode(SOL_PIN, OUTPUT);
+    pinMode(SW_PIN, INPUT_PULLUP);
     digitalWrite(SOL_PIN, HIGH);
     // Startup serial for debugging
     Serial.begin(115200);
@@ -113,8 +116,45 @@ void update_pixels(bool on) {
      pixels.show();
 }
 
+void win(bool on) {
+     pixels.clear();
+     for (unsigned int i = 0; i < LED_SIZE && on; i++) {
+         pixels.setPixelColor(i, pixels.Color(0xaa, 0x33, 0x6a));
+     }
+     pixels.show();
+}
+
 void loop()
 {
+    static bool win_flash = false;
+    int not_end = digitalRead(SW_PIN);
+    // Win condition
+    if (!not_end) {
+        digitalWrite(SOL_PIN, LOW);
+        win(win_flash);
+        delay(100);
+	win_flash = !win_flash;
+	return;
+    }
+    // Solinoid on for one second
+    else if ((MILLIS_START != 0) && (MILLIS_START + 1000) > millis()) {
+        digitalWrite(SOL_PIN, HIGH);
+    }
+    // Solinoid on trigger
+    else if ((MILLIS_START == 0) && all()) {
+        MILLIS_START = millis();
+        digitalWrite(SOL_PIN, HIGH);
+    }
+    // Reset by turning it off
+    else if (!all()) {
+	MILLIS_START = 0;
+        digitalWrite(SOL_PIN, LOW);
+    }
+    // Otherwise off
+    else {
+        digitalWrite(SOL_PIN, LOW);
+    }
+    // Now handle WIFI connections
     WiFiClient client = server.available();
     if (!client) { return; }
     if (client.connected()) {
@@ -130,5 +170,4 @@ void loop()
         update_pixels(true);
     }
     client.stop();
-    digitalWrite(SOL_PIN, all() ? HIGH : LOW);
 }
