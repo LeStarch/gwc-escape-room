@@ -36,6 +36,22 @@ let PlansApp = {
     data: () => { return {
             plans: [
                 {
+                    "id":    "promotions",
+                    "title": "MISC: New Evil Promtions",
+                    "html": `
+                    <h5>To: Evil Inc.</h5>
+                    <h5>From: Evil Promotions</h5>
+                    <h5>Subject: New Promotional Video!</h5>     
+                    <p>Promotions video! Use for all Evil promotions, new security practices, and for recruiting Evil
+                    employees.</p>
+                    <p>Enjoy your evil day.</p>               
+                    <video width="320" height="240" controls>
+                        <source src="video/promotions.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video> 
+                    `
+                },
+                {
                     "id":    "bears",
                     "title": "Test Report: Bears with Knives",
                     "html": `
@@ -108,7 +124,7 @@ let PlansApp = {
 >>> FRANK!!!
 >>>
 >>>> To: All Evil Inc.
->>>> From: Jessica, Evil Inc. Information Technologies
+>>>> From: Cath, Evil Inc. Information Technologies
 >>>> Subject: STOP REPLYING ALL
 >>>>
 >>>> This is your bi-weekly reminder to not use REPLY ALL on e-mails bound for all
@@ -116,7 +132,7 @@ let PlansApp = {
 >>>> communications.
 >>>> 
 >>>> Have an Evil Day,
->>>> - Jessica
+>>>> - Cath (989) 859-8836
 </pre>
                     `
                 },
@@ -253,6 +269,17 @@ let PlansApp = {
                     the former employees of Team Omega and Perry the Platapus.  Initial schemtaics are included below.
                     </p>
                     <img src="img/plans/sun.svg" style="width: 20em"/>
+                    `
+                },
+                {
+                    "id": "new_it",
+                    "title": "MEMO: Welcome From New IT",
+                    "html": `
+                    <h5>To: Evil Inc.</h5>
+                    <h5>From: Cath, Evil Inc. Information Technologies</h5>
+                    <h5>Subject: IT Coup</h5>
+                    <p>Salutations, I have taken control of IT.</p>
+                    <p>- Cath (989) 859-8836</p>
                     `
                 },
                 {

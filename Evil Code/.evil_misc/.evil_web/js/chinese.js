@@ -140,10 +140,10 @@ Frank,<br/><br/>
 >>>> Thanks. -DDD
 >>>>
 >>>>> To: Dr. Doofenstarch
->>>>> From: Cathryn in IT
+>>>>> From: Cath, Evil Inc. Information Technologies
 >>>>> Subject: Re: Re: Re: Fw: AUTO-REPLY: Re: Fire IT Employee
 >>>>>
->>>>> DONE. PerryLUV. -Cath
+>>>>> DONE. PerryLUV. -Cath (989) 859-8836
 >>>>>
 >>>>> PS Only IT Director Worthington III can reconfigure the account
 >>>>>
@@ -156,12 +156,12 @@ Frank,<br/><br/>
 >>>>>> - Doofenstarch 
 >>>>>>
 >>>>>>> To: Dr. Doofenstarch
->>>>>>> From: Cathryn in IT
+>>>>>>> From: Cath, Evil Inc. Information Technologies
 >>>>>>> Subject: Re: Fw: AUTO-REPLY: Re: Fire IT Employee
 >>>>>>>
->>>>>>> DONE. -Cath
+>>>>>>> DONE. -Cath (989) 859-8836
 >>>>>>>
->>>>>>>> To: All Evil Inc.
+>>>>>>>> To: Cath, Evil Inc. Information Technologies
 >>>>>>>> From: Dr. Doofenstarch
 >>>>>>>> Subject: Fw: AUTO-REPLY: Re: Fire IT Employee
 >>>>>>>>
